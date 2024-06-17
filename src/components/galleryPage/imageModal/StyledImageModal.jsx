@@ -6,6 +6,7 @@ export const StyledModalCloseButton = styled.div`
   top: 15px;
   width: 32px;
   height: 32px;
+  cursor: pointer;
   &:before,
   &:after {
     position: absolute;
@@ -33,4 +34,5 @@ export const StyledModalWrapper = styled.div`
   background: #ffffff;
   width: 60%;
   min-width: 650px;
+  outline: none;
 `;
