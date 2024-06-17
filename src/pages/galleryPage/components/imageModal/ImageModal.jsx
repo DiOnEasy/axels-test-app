@@ -1,15 +1,14 @@
 import { Box, Grid, Modal, Typography } from "@mui/material";
-import { ModalWrapper } from "../../../../styled/components/StyledModal";
-import { Image } from "../Image/Image";
+import { Image } from "../GalleryImage/GalleryImage";
 import { ModalInput } from "../modalInput/ModalInput";
 import { ModalButton } from "../modalButton/ModalButton";
-import { StyledModalCloseButton } from "../../../../styled/components/StyledModalCloseButton";
+import { StyledModalCloseButton, StyledModalWrapper } from "./StyledImageModal";
 
 export const ImageModal = ({ open, handleClose }) => {
   return (
-    <Modal open={open} onClose={handleClose}>
-      <ModalWrapper>
-        <StyledModalCloseButton />
+    <Modal open={open}>
+      <StyledModalWrapper>
+        <StyledModalCloseButton onClick={handleClose} />
         <Grid container columns={{ lg: 12 }}>
           <Grid paddingX={2} item xs={12} md={7}>
             <Image
@@ -18,20 +17,20 @@ export const ImageModal = ({ open, handleClose }) => {
               }
             />
           </Grid>
-          <Grid item xs={12} md={5}>
+          <Grid paddingTop={2} item xs={12} md={5}>
             <Box>
-              <Typography color={"#C9C9C9"} fontSize={16}>
+              <Typography color={"var(--text-color-secondary)"} fontSize={16}>
                 18.12.2019
               </Typography>
-              <Typography color={"#000000"} fontSize={16}>
+              <Typography color={"var(--text-color)"} fontSize={16}>
                 Отличное фото
               </Typography>
             </Box>
             <Box>
-              <Typography color={"#C9C9C9"} fontSize={16}>
+              <Typography color={"var(--text-color-secondary)"} fontSize={16}>
                 18.12.2019
               </Typography>
-              <Typography color={"#000000"} fontSize={16}>
+              <Typography color={"var(--text-color)"} fontSize={16}>
                 Я тут был, очень понравилось
               </Typography>
             </Box>
@@ -42,7 +41,7 @@ export const ImageModal = ({ open, handleClose }) => {
             <ModalButton />
           </Grid>
         </Grid>
-      </ModalWrapper>
+      </StyledModalWrapper>
     </Modal>
   );
 };

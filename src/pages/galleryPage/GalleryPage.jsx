@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { Image } from "./components/Image/Image";
+import { Image } from "./components/GalleryImage/GalleryImage";
 import { useState } from "react";
 import { ImageModal } from "./components/imageModal/ImageModal";
 

@@ -6,4 +6,5 @@ export const StyledHeader = styled.h1`
   line-height: 62px;
   text-align: center;
   margin-bottom: 25px;
+  color: var(--text-color);
 `;

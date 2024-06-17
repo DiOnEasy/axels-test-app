@@ -1,4 +1,4 @@
-import { StyledModalButton } from "../../../../styled/components/StyledModalButton"
+import { StyledModalButton } from "./StyledModalButton"
 
 export const ModalButton = () =>{
     return(
