@@ -1,9 +1,8 @@
 import { Box, Grid, Modal, Typography } from "@mui/material";
-import { Image } from "../galleryImage/GalleryImage";
-import { ModalInput } from "../modalInput/ModalInput";
-import { ModalButton } from "../modalButton/ModalButton";
+
 import { StyledModalWrapper } from "../../../styled/galleryPage/imageModal/StyledModalWrapper";
 import { StyledModalCloseButton } from "../../../styled/galleryPage/imageModal/StyledModalCloseButton";
+import { GalleryImage, ModalButton, ModalInput } from "../../index";
 
 export const ImageModal = ({ open, onCloseImageModal }) => {
   return (
@@ -12,7 +11,7 @@ export const ImageModal = ({ open, onCloseImageModal }) => {
         <StyledModalCloseButton onClick={onCloseImageModal} />
         <Grid container columns={{ xs: 1, sm: 12 }}>
           <Grid paddingX={{ sm: 2, xs: 0 }} item xs={1} sm={7}>
-            <Image
+            <GalleryImage
               src={
                 "https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp"
               }

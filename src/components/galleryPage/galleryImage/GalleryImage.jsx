@@ -1,5 +1,5 @@
 import { StyledGalleryImage } from "../../../styled/galleryPage/galleryImage/StyledGalleryImage";
 
-export const Image = ({ src, onOpenImageModal }) => (
+export const GalleryImage = ({ src, onOpenImageModal }) => (
   <StyledGalleryImage onClick={onOpenImageModal} src={src} />
 );

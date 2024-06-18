@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
-import { Image } from "../../components/galleryPage/galleryImage/GalleryImage";
+import { GalleryImage, ImageModal } from "../../components";
 import { useState } from "react";
-import { ImageModal } from "../../components/galleryPage/imageModal/ImageModal";
 
 export const GalleryPage = () => {
   const [modalOpen, setModalOpen] = useState(true);
@@ -39,7 +38,10 @@ export const GalleryPage = () => {
         {images &&
           images.map((img, index) => (
             <Grid key={index} item xs={4}>
-              <Image onOpenImageModal={handleOpenImageModal} src={img.url} />
+              <GalleryImage
+                onOpenImageModal={handleOpenImageModal}
+                src={img.url}
+              />
             </Grid>
           ))}
       </Grid>

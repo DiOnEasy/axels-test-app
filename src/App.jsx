@@ -1,6 +1,5 @@
 import { GalleryPage } from "./pages/galleryPage/GalleryPage";
-import { Footer } from "./components/footer/Footer";
-import { Header } from "./components/header/Header";
+import { Footer, Header } from "./components";
 import { AppWrapper } from "./styled/AppWrapper";
 
 function App() {
