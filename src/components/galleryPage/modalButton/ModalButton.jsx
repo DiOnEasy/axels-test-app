@@ -1,9 +1,5 @@
-import { StyledModalButton } from "./StyledModalButton"
+import { StyledModalButton } from "./StyledModalButton";
 
-export const ModalButton = () =>{
-    return(
-       <StyledModalButton>
-        Оставить комментарий
-       </StyledModalButton>
-    )
-}
+export const ModalButton = () => (
+  <StyledModalButton>Оставить комментарий</StyledModalButton>
+);
