@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledGalleryImage = styled.img.attrs((props) =>({
-  src:  props.src || null,
+export const StyledGalleryImage = styled.img.attrs((props) => ({
+    src: props.src || null,
 }))`
-  width: 100%;
-  cursor: pointer;
+    width: 100%;
+    cursor: pointer;
 `;
