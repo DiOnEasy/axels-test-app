@@ -2,7 +2,8 @@ import { Box, Grid, Modal, Typography } from "@mui/material";
 import { Image } from "../galleryImage/GalleryImage";
 import { ModalInput } from "../modalInput/ModalInput";
 import { ModalButton } from "../modalButton/ModalButton";
-import { StyledModalCloseButton, StyledModalWrapper } from "./StyledImageModal";
+import { StyledModalWrapper } from "../../../styled/galleryPage/imageModal/StyledModalWrapper";
+import { StyledModalCloseButton } from "../../../styled/galleryPage/imageModal/StyledModalCloseButton";
 
 export const ImageModal = ({ open, onCloseImageModal }) => {
   return (

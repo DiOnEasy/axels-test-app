@@ -23,16 +23,3 @@ export const StyledModalCloseButton = styled.div`
     transform: rotate(-45deg);
   }
 `;
-
-
-export const StyledModalWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 25px;
-  background: #ffffff;
-  width: 60%;
-  min-width: 650px;
-  outline: none;
-`;
