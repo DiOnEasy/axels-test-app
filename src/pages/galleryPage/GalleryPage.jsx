@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 
 import { GalleryImage, ImageModal } from '../../components';
+import { json } from 'react-router-dom';
 
 export const GalleryPage = () => {
     const [modalOpen, setModalOpen] = useState(true);
@@ -29,6 +30,20 @@ export const GalleryPage = () => {
         }
     ];
 
+    // useEffect(() => {
+    //     fetch('/api/images')
+    //         .then((res) => res.json())
+    //         .then((json) => console.log(json))
+    //         .catch((err) => console.log(err));
+    // }, []);
+
+    // useEffect(() => {
+    //     fetch('/api/images/1')
+    //         .then((res) => res.json())
+    //         .then((json) => console.log(json))
+    //         .catch((err) => console.log(err));
+    // }, []);
+    
     return (
         <>
             <Grid
