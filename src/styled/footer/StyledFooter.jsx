@@ -8,7 +8,7 @@ export const StyledFooter = styled.div`
     padding: 15px 0;
     text-align: center;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 25px;
     width: calc(100% - 50px);
     background: ${variables.color.white};

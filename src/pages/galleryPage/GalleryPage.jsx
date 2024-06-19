@@ -41,6 +41,7 @@ export const GalleryPage = () => {
                     images.map((img, index) => (
                         <Grid key={index} item xs={4}>
                             <GalleryImage
+                                $pointer
                                 onOpenImageModal={handleOpenImageModal}
                                 src={img.url}
                             />

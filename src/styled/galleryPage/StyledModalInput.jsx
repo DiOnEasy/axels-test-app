@@ -9,6 +9,7 @@ export const StyledInput = styled.input.attrs(({ placeholder }) => ({
     width: 100%;
     border-radius: 5px;
     margin-bottom: 15px;
+    cursor: pointer;
     &::placeholder {
         color: #e1e1e1;
     }
