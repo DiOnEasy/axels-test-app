@@ -1,5 +1,9 @@
-import { StyledGalleryImage } from "./StyledGalleryImage";
+import { StyledGalleryImage } from '../../../styled/galleryPage/StyledGalleryImage';
 
-export const Image = ({ src, onOpenImageModal }) => {
-  return <StyledGalleryImage onClick={onOpenImageModal} src={src} />;
-};
+export const GalleryImage = ({ src, onOpenImageModal, $pointer }) => (
+    <StyledGalleryImage
+        onClick={onOpenImageModal}
+        src={src}
+        $pointer={$pointer}
+    />
+);

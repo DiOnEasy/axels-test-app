@@ -1,9 +1,3 @@
-import { StyledHeader } from "./StyledHeader"
+import { StyledHeader } from '../../styled/header/StyledHeader';
 
-export const Header = () =>{
-    return(
-        <StyledHeader>
-            Test app
-        </StyledHeader>
-    )
-}
+export const Header = () => <StyledHeader>Test app</StyledHeader>;

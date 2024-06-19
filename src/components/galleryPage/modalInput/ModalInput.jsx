@@ -1,5 +1,5 @@
-import { StyledInput } from "./StyledModalInput";
+import { StyledInput } from '../../../styled/galleryPage/StyledModalInput';
 
-export const ModalInput = ({placeholder}) => {
-  return <StyledInput placeholder={placeholder} />;
-};
+export const ModalInput = ({ placeholder }) => (
+    <StyledInput placeholder={placeholder} />
+);
