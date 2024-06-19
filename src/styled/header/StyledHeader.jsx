@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
+import { variables } from '../variables';
+
 export const StyledHeader = styled.h1`
     text-transform: uppercase;
-    font-size: 54px;
-    line-height: 62px;
+    font-size: ${variables.fontSize.xl};
     text-align: center;
     margin-bottom: 25px;
-    color: var(--text-color);
+    color: ${variables.color.primary};
 `;

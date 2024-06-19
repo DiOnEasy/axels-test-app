@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { variables } from '../../variables';
+
 export const StyledModalCloseButton = styled.div`
     position: absolute;
     right: 15px;
@@ -14,7 +16,7 @@ export const StyledModalCloseButton = styled.div`
         content: ' ';
         height: 33px;
         width: 2px;
-        background-color: #333;
+        background-color: ${variables.color.primary};
     }
     &:before {
         transform: rotate(45deg);

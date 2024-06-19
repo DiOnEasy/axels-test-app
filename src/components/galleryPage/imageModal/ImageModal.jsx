@@ -4,6 +4,8 @@ import { GalleryImage, ModalButton, ModalInput } from '../../index';
 import { StyledModalWrapper } from '../../../styled/galleryPage/imageModal/StyledModalWrapper';
 import { StyledModalCloseButton } from '../../../styled/galleryPage/imageModal/StyledModalCloseButton';
 
+import { variables } from '../../../styled/variables';
+
 export const ImageModal = ({ open, onCloseImageModal }) => {
     return (
         <Modal open={open}>
@@ -27,23 +29,29 @@ export const ImageModal = ({ open, onCloseImageModal }) => {
                     >
                         <Box>
                             <Typography
-                                color="var(--text-color-secondary)"
-                                fontSize={16}
+                                color={variables.color.secondary}
+                                fontSize={variables.fontSize.md}
                             >
                                 18.12.2019
                             </Typography>
-                            <Typography color="var(--text-color)" fontSize={16}>
+                            <Typography
+                                color={variables.color.primary}
+                                fontSize={variables.fontSize.md}
+                            >
                                 Отличное фото
                             </Typography>
                         </Box>
                         <Box>
                             <Typography
-                                color="var(--text-color-secondary)"
-                                fontSize={16}
+                                color={variables.color.secondary}
+                                fontSize={variables.fontSize.md}
                             >
                                 18.12.2019
                             </Typography>
-                            <Typography color="var(--text-color)" fontSize={16}>
+                            <Typography
+                                color={variables.color.primary}
+                                fontSize={variables.fontSize.md}
+                            >
                                 Я тут был, очень понравилось
                             </Typography>
                         </Box>
