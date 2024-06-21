@@ -2,7 +2,6 @@ import { StyledGalleryImage } from '../../../styled/galleryPage/StyledGalleryIma
 
 export const GalleryImage = ({ src, onOpenImageModal, $pointer }) => (
     <StyledGalleryImage
-        onClick={onOpenImageModal}
         src={src}
         $pointer={$pointer}
     />

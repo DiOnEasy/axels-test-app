@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledInput = styled.input.attrs(({ placeholder }) => ({
-    placeholder: placeholder
-}))`
+export const StyledInput = styled.input`
     background: transparent;
     border: 1px solid #e2e2e1;
     padding: 10px;

@@ -3,21 +3,31 @@ import { Grid } from '@mui/material';
 
 import { GalleryImage, ImageModal } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
-import { getImages } from '../../store/ducks/images';
+import { fetchImages } from '../../store/ducks/images';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 export const GalleryPage = () => {
     const dispatch = useDispatch();
-    const [modalOpen, setModalOpen] = useState(false);
-    const handleOpenImageModal = () => setModalOpen(true);
-    const handleCloseImageModal = () => setModalOpen(false);
+    const navigate = useNavigate();
+    const { id } = useParams();
+
+    const [modalOpen, setModalOpen] = useState(!!id);
 
     const images = useSelector((state) => state.images.images);
     const loading = useSelector((state) => state.images.loading);
+    const imageDetails = useSelector((state) => state.images.imageDetails);
+
+    const handleCloseImageModal = () => {
+        navigate('/gallery');
+    };
 
     useEffect(() => {
-        dispatch(getImages());
-        console.log(images)
+        dispatch(fetchImages());
     }, [dispatch]);
+
+    useEffect(() => {
+        setModalOpen(!!id);
+    }, [id]);
 
     return (
         <>
@@ -34,18 +44,18 @@ export const GalleryPage = () => {
                         {images &&
                             images.map((img, index) => (
                                 <Grid key={index} item xs={4}>
-                                    <GalleryImage
-                                        $pointer
-                                        onOpenImageModal={handleOpenImageModal}
-                                        src={img.url}
-                                    />
+                                    <Link to={`/gallery/${img.id}`}>
+                                        <GalleryImage $pointer src={img.url} />
+                                    </Link>
                                 </Grid>
                             ))}
                     </Grid>
-                    <ImageModal
-                        open={modalOpen}
-                        onCloseImageModal={handleCloseImageModal}
-                    />
+                    {modalOpen && id && (
+                        <ImageModal
+                            open={modalOpen}
+                            onCloseImageModal={handleCloseImageModal}
+                        />
+                    )}
                 </>
             )}
         </>

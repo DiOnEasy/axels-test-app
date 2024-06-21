@@ -1,6 +1,10 @@
 import { all } from '@redux-saga/core/effects';
-import { watcherGetImages } from './ducks/images';
+import { watcherFetchImageDetails, watcherFetchImages, watcherSendComment } from './ducks/images';
 
 export default function* rootSaga() {
-    yield all([watcherGetImages()]);
+    yield all([
+        watcherFetchImages(),
+        watcherFetchImageDetails(),
+        watcherSendComment()
+    ]);
 }

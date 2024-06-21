@@ -9,7 +9,7 @@ export const routes = [
         component: <Navigate to="/gallery" />
     },
     {
-        path: '/gallery',
+        path: '/gallery/:id?',
         component: <GalleryPage />
     },
     {
