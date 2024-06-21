@@ -44,7 +44,12 @@
       "last 1 safari version"
     ]
   },
+  "presets": [
+    "@babel/preset-env"
+  ],
   "devDependencies": {
-    "miragejs": "^0.2.0-alpha.2"
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "miragejs": "^0.2.0-alpha.2",
+    "prettier": "^3.3.2"
   }
 }

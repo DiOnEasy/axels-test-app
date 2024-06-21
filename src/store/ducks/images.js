@@ -48,7 +48,9 @@ export const imageSlice = createSlice({
 });
 
 export const fetchImages = createAction('test-task/images/FETCH_IMAGES');
-export const fetchImageDetails = createAction('test-task/images/FETCH_IMAGE_DETAILS');
+export const fetchImageDetails = createAction(
+    'test-task/images/FETCH_IMAGE_DETAILS'
+);
 export const sendComment = createAction('test-task/images/SEND_COMMENT');
 
 export function* watcherFetchImages() {
