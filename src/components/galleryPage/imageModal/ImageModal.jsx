@@ -57,7 +57,7 @@ export const ImageModal = ({ open, onCloseImageModal }) => {
                                     sm={5}
                                 >
                                     {image.comments.map((comment, index) => (
-                                        <Box>
+                                        <Box key={index}>
                                             <Typography
                                                 color={
                                                     variables.color.secondary

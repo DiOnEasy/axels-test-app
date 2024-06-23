@@ -96,15 +96,19 @@ export function* workerFetchImageDetails(action) {
 
 export function* workerSendComment(action) {
     try {
+        const {
+            commentInfo,
+            id: { id }
+        } = action.payload;
         yield put(setLoading({ type: 'commentLoading', value: true }));
         const { data } = yield call(
             axios.post,
-            `/api/images/1/comments`,
-            action.payload
+            `/api/images/${id}/comments`,
+            commentInfo
         );
         console.log(data);
         if (data._bodyInit === 204) {
-            yield put(sendCommentSuccess(action.payload));
+            yield put(sendCommentSuccess(commentInfo));
         } else {
             alert('Something went wrong');
         }

@@ -1,13 +1,16 @@
 import { Grid } from '@mui/material';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { ModalButton } from '../modalButton/ModalButton';
 import { ModalInput } from '../modalInput/ModalInput';
-import { useDispatch } from 'react-redux';
+
 import { sendComment } from '../../../store/ducks/images';
 
 export const CommentForm = () => {
     const dispatch = useDispatch();
+    const id = useParams();
 
     const [commentInfo, setCommentInfo] = useState({ name: '', text: '' });
 
@@ -19,9 +22,9 @@ export const CommentForm = () => {
         setCommentInfo((exValues) => ({ ...exValues, text: e.target.value }));
     };
 
-    const handleSendComment = () =>{
-        dispatch(sendComment(commentInfo))
-    }
+    const handleSendComment = () => {
+        dispatch(sendComment({commentInfo, id}));
+    };
 
     return (
         <Grid paddingX={2} paddingY={1} item xs={1} sm={7}>
