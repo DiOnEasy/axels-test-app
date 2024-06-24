@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { AppWrapper } from 'styled/AppWrapper';
 import { Footer, Header } from 'components';
+import { AppWrapper } from 'styled/AppWrapper';
+
 import { routes } from 'routes/routes';
 
 function App() {

@@ -1,16 +1,16 @@
-import { Box, CircularProgress, Grid, Modal, Typography } from '@mui/material';
-import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import { StyledModalWrapper } from 'styled/galleryPage/imageModal/StyledModalWrapper';
-import { StyledModalCloseButton } from 'styled/galleryPage/imageModal/StyledModalCloseButton';
+import { Box, CircularProgress, Grid, Modal, Typography } from '@mui/material';
 import { CommentForm } from 'components';
-
+import { GalleryImage } from 'components';
+import { StyledModalCloseButton } from 'styled/galleryPage/imageModal/StyledModalCloseButton';
+import { StyledModalWrapper } from 'styled/galleryPage/imageModal/StyledModalWrapper';
 import { variables } from 'styled/variables';
+
 import { fetchImageDetails } from 'store/ducks/images';
 import { convertDate } from 'utils/converDate';
-import { GalleryImage } from 'components';
 
 export const ImageModal = ({ open, onCloseImageModal }) => {
     const dispatch = useDispatch();

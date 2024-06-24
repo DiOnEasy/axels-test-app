@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Grid } from '@mui/material';
-import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
+import { Grid } from '@mui/material';
 import { GalleryImage, ImageModal } from 'components';
 
 import { fetchImages } from 'store/ducks/images';
-
-
 
 export const GalleryPage = () => {
     const dispatch = useDispatch();

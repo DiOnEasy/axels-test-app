@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { variables } from 'styled/variables';
 
 export const StyledHeader = styled.h1`

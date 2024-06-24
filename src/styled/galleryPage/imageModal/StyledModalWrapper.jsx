@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { variables } from '../../variables';
+import { variables } from 'styled/variables';
 
 export const StyledModalWrapper = styled.div`
     position: absolute;

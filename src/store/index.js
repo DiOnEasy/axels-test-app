@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
+import { configureStore } from '@reduxjs/toolkit';
 
 import imageReducer from 'store/ducks/images';
 import sagas from 'store/sagas';

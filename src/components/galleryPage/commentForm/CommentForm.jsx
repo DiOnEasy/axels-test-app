@@ -1,11 +1,12 @@
-import { Grid } from '@mui/material';
-import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 
+import { Grid } from '@mui/material';
+import { ModalButton, ModalInput } from 'components';
+
 import { sendComment } from 'store/ducks/images';
-import { ModalInput, ModalButton } from 'components';
 
 export const CommentForm = () => {
     const dispatch = useDispatch();
