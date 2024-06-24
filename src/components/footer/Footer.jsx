@@ -1,4 +1,4 @@
-import { StyledFooter } from '../../styled/footer/StyledFooter';
+import { StyledFooter } from 'styled/footer/StyledFooter';
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();

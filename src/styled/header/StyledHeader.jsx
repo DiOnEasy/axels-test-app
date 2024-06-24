@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { variables } from '../variables';
+import { variables } from 'styled/variables';
 
 export const StyledHeader = styled.h1`
     text-transform: uppercase;

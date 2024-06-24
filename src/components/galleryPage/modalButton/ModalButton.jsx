@@ -1,7 +1,5 @@
-import { StyledModalButton } from '../../../styled/galleryPage/StyledModalButton';
+import { StyledModalButton } from 'styled/galleryPage/StyledModalButton';
 
-export const ModalButton = ({onButtonClick}) => (
-    <StyledModalButton onClick={onButtonClick}>
-        Оставить комментарий
-    </StyledModalButton>
+export const ModalButton = ({ type }) => (
+    <StyledModalButton type={type}>Оставить комментарий</StyledModalButton>
 );

@@ -1,6 +1,6 @@
 import { createServer } from 'miragejs';
 
-import data from './data.json';
+import data from 'mockServer/data.json';
 
 createServer({
     routes() {

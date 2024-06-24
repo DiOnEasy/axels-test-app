@@ -1,9 +1,7 @@
 {
-    "singleQuote": true,
-    "jsxSingleQuote": false,
-    "parser": "flow",
-    "tabWidth": 4,
-    "trailingComma": "none"
-
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "parser": "flow",
+  "tabWidth": 4,
+  "trailingComma": "none"
 }
-  
