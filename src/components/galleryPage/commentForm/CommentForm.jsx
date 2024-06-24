@@ -30,7 +30,6 @@ export const CommentForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (commentInfo) => {
-            console.log('fsdklfjsld');
             dispatch(sendComment({ commentInfo, id }));
         }
     });

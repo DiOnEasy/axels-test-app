@@ -107,7 +107,6 @@ export function* workerSendComment(action) {
             `/api/images/${id}/comments`,
             commentInfo
         );
-        console.log(data);
         if (data._bodyInit === 204) {
             yield put(sendCommentSuccess(commentInfo));
         } else {

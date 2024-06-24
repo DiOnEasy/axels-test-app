@@ -23,7 +23,6 @@ export const ImageModal = ({ open, onCloseImageModal }) => {
 
     useEffect(() => {
         dispatch(fetchImageDetails(id));
-        console.log(image);
     }, [dispatch, id]);
 
     return (

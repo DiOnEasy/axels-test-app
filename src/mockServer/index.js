@@ -31,6 +31,7 @@ createServer({
 
         this.post('/images/:id/comments', (schema, request) => {
             const attrs = JSON.parse(request.requestBody);
+            // console.log for backend simulation 
             console.log('Received comment:', attrs);
 
             return new Response(204, {}, null);
