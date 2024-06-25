@@ -1,9 +1,32 @@
 import { call, put, takeEvery } from '@redux-saga/core/effects';
-import { createAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
 
 import axios from 'api/axios';
 
-const initialState = {
+export interface IComment {
+    text: string;
+    name: string;
+    date: number;
+}
+
+export interface IImage {
+    id: string | null;
+    url: string | null;
+}
+
+export interface IImageDetails extends IImage {
+    comments: IComment[];
+}
+
+export interface IInitialState {
+    loading: boolean;
+    imageDetailsLoading: boolean;
+    commentLoading: boolean;
+    images: IImage[];
+    imageDetails: IImageDetails;
+}
+
+const initialState: IInitialState = {
     loading: false,
     imageDetailsLoading: false,
     commentLoading: false,
@@ -19,52 +42,58 @@ export const imageSlice = createSlice({
     name: 'galleryImages',
     initialState,
     reducers: {
-        setLoading(state, action) {
+        setLoading(
+            state,
+            action: PayloadAction<{
+                type: keyof Pick<
+                    IInitialState,
+                    'loading' | 'imageDetailsLoading' | 'commentLoading'
+                >,
+                value: boolean
+            }>
+        ) {
             const { type, value } = action.payload;
             state[type] = value;
         },
-        fetchImagesSuccess: (state, action) => {
+        fetchImagesSuccess: (state, action: PayloadAction<IImage[]>) => {
             state.images = action.payload;
         },
-        fetchImageDetailsSuccess: (state, action) => {
+        fetchImageDetailsSuccess: (
+            state,
+            action: PayloadAction<IImageDetails>
+        ) => {
             state.imageDetails = action.payload;
         },
-        sendCommentSuccess: (state, action) => {
-            return {
-                ...state,
-                imageDetails: {
-                    ...state.imageDetails,
-                    comments: [
-                        ...state.imageDetails.comments,
-                        {
-                            text: action.payload.text,
-                            userId: action.payload.name,
-                            date: Math.floor(Date.now() / 1000)
-                        }
-                    ]
-                }
-            };
+        sendCommentSuccess: (state, action: PayloadAction<IComment>) => {
+            state.imageDetails.comments.push({
+                text: action.payload.text,
+                name: action.payload.name,
+                date: Math.floor(Date.now() / 1000)
+            });
         }
     }
 });
 
 export const fetchImages = createAction('test-task/images/FETCH_IMAGES');
-export const fetchImageDetails = createAction(
+export const fetchImageDetails = createAction<string>(
     'test-task/images/FETCH_IMAGE_DETAILS'
 );
-export const sendComment = createAction('test-task/images/SEND_COMMENT');
+export const sendComment = createAction<{
+    commentInfo: IComment,
+    id: string
+}>('test-task/images/SEND_COMMENT');
 
 export function* watcherFetchImages() {
     yield takeEvery(fetchImages, workerFetchImages);
 }
 export function* watcherFetchImageDetails() {
-    yield takeEvery(fetchImageDetails, workerFetchImageDetails);
+    yield takeEvery(fetchImageDetails.type, workerFetchImageDetails);
 }
 export function* watcherSendComment() {
-    yield takeEvery(sendComment, workerSendComment);
+    yield takeEvery(sendComment.type, workerSendComment);
 }
 
-export function* workerFetchImages(state) {
+export function* workerFetchImages() {
     try {
         yield put(setLoading({ type: 'loading', value: true }));
         const {
@@ -78,7 +107,9 @@ export function* workerFetchImages(state) {
     }
 }
 
-export function* workerFetchImageDetails(action) {
+export function* workerFetchImageDetails(
+    action: PayloadAction<{ id: string }>
+) {
     try {
         yield put(setLoading({ type: 'imageDetailsLoading', value: true }));
         const {
@@ -95,7 +126,9 @@ export function* workerFetchImageDetails(action) {
     }
 }
 
-export function* workerSendComment(action) {
+export function* workerSendComment(
+    action: PayloadAction<{ commentInfo: IComment, id: { id: string } }>
+) {
     try {
         const {
             commentInfo,
@@ -123,8 +156,8 @@ export const {
     setLoading,
     fetchImagesSuccess,
     fetchImageDetailsSuccess,
-    sendImageSuccess,
+
     sendCommentSuccess
 } = imageSlice.actions;
 
-export default imageSlice.reducer;
+export default imageSlice.reducer as any;

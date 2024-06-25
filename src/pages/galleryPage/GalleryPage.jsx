@@ -7,6 +7,10 @@ import { GalleryImage, ImageModal } from 'components';
 
 import { fetchImages } from 'store/ducks/images';
 
+// interface Params {
+//     id: string | undefined;
+// }
+
 export const GalleryPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -27,6 +31,7 @@ export const GalleryPage = () => {
 
     useEffect(() => {
         setModalOpen(!!id);
+        console.log(id);
     }, [id]);
 
     return (

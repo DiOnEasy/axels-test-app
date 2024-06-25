@@ -13,7 +13,6 @@ function App() {
                 {routes.map((route, index) => (
                     <Route
                         key={index}
-                        exact={route.exact}
                         path={route.path}
                         element={route.component}
                     />
