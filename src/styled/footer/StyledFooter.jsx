@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { variables } from '../variables';
+import { variables } from 'styled/variables';
 
 export const StyledFooter = styled.div`
     border-top: 1px solid ${variables.color.secondary};

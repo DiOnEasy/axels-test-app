@@ -1,8 +1,16 @@
-{
-    "singleQuote": true,
-    "jsxSingleQuote": false,
-    "parser": "flow",
-    "tabWidth": 4,
-    "trailingComma": "none"
-}
+{  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "parser": "flow",
+  "tabWidth": 4,
+  "trailingComma": "none",
+  "importOrder": [
+    "^@((?!mui).)*$|<THIRD_PARTY_MODULES>|^react(.*)$",
+    "^components/(.*)$|components|^pages/(.*)$|pages|^styled/(.*)$|styled|@mui/(.*)$|@mui|App",
+    "^.*/|^.*"
+  ],
+  "importOrderSeparation": true
   
+ 
+ 
+}
