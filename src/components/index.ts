@@ -1,7 +1,7 @@
-export { Footer } from 'components/footer/Footer';
-export { Header } from 'components/header/Header';
-export { GalleryImage } from 'components/galleryPage/galleryImage/GalleryImage';
-export { ImageModal } from 'components/galleryPage/imageModal/ImageModal';
-export { ModalButton } from 'components/galleryPage/modalButton/ModalButton';
-export { ModalInput } from 'components/galleryPage/modalInput/ModalInput';
-export { CommentForm } from 'components/galleryPage/commentForm/CommentForm';
+export { Footer } from 'components/Footer';
+export { Header } from 'components/Header';
+export { GalleryImage } from 'components/galleryPage/GalleryImage';
+export { ImageModal } from 'components/galleryPage/ImageModal';
+export { ModalButton } from 'components/galleryPage/ModalButton';
+export { ModalInput } from 'components/galleryPage/ModalInput';
+export { CommentForm } from 'components/galleryPage/CommentForm';
