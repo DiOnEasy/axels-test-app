@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
 import { GalleryImage, ImageModal } from 'components';
 
+import { RootState } from 'store';
 import { fetchImages } from 'store/ducks/images';
-
-// interface Params {
-//     id: string | undefined;
-// }
 
 export const GalleryPage = () => {
     const dispatch = useDispatch();
@@ -18,8 +15,8 @@ export const GalleryPage = () => {
 
     const [modalOpen, setModalOpen] = useState(!!id);
 
-    const images = useSelector((state) => state.images.images);
-    const loading = useSelector((state) => state.images.loading);
+    const images = useSelector((state: RootState) => state.images.images);
+    const loading = useSelector((state: RootState) => state.images.loading);
 
     const handleCloseImageModal = () => {
         navigate('/gallery');
@@ -31,7 +28,6 @@ export const GalleryPage = () => {
 
     useEffect(() => {
         setModalOpen(!!id);
-        console.log(id);
     }, [id]);
 
     return (
@@ -47,13 +43,19 @@ export const GalleryPage = () => {
                         columns={{ xs: 4, sm: 8, lg: 12 }}
                     >
                         {images &&
-                            images.map((img, index) => (
-                                <Grid key={index} item xs={4}>
-                                    <Link to={`/gallery/${img.id}`}>
-                                        <GalleryImage $pointer src={img.url} />
-                                    </Link>
-                                </Grid>
-                            ))}
+                            images.map(
+                                (img, index) =>
+                                    img.url && (
+                                        <Grid key={index} item xs={4}>
+                                            <Link to={`/gallery/${img.id}`}>
+                                                <GalleryImage
+                                                    $pointer
+                                                    src={img.url}
+                                                />
+                                            </Link>
+                                        </Grid>
+                                    )
+                            )}
                     </Grid>
                     {modalOpen && id && (
                         <ImageModal

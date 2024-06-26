@@ -3,9 +3,11 @@ import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
 
 import axios from 'api/axios';
 
-export interface IComment {
+export interface ICommentInfo {
     text: string;
     name: string;
+}
+export interface IComment extends ICommentInfo {
     date: number;
 }
 
@@ -64,7 +66,7 @@ export const imageSlice = createSlice({
         ) => {
             state.imageDetails = action.payload;
         },
-        sendCommentSuccess: (state, action: PayloadAction<IComment>) => {
+        sendCommentSuccess: (state, action: PayloadAction<ICommentInfo>) => {
             state.imageDetails.comments.push({
                 text: action.payload.text,
                 name: action.payload.name,
@@ -79,7 +81,7 @@ export const fetchImageDetails = createAction<string>(
     'test-task/images/FETCH_IMAGE_DETAILS'
 );
 export const sendComment = createAction<{
-    commentInfo: IComment,
+    commentInfo: ICommentInfo,
     id: string
 }>('test-task/images/SEND_COMMENT');
 
@@ -127,7 +129,7 @@ export function* workerFetchImageDetails(
 }
 
 export function* workerSendComment(
-    action: PayloadAction<{ commentInfo: IComment, id: { id: string } }>
+    action: PayloadAction<{ commentInfo: ICommentInfo, id: { id: string } }>
 ) {
     try {
         const {
@@ -160,4 +162,4 @@ export const {
     sendCommentSuccess
 } = imageSlice.actions;
 
-export default imageSlice.reducer as any;
+export default imageSlice.reducer;

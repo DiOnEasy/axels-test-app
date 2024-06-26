@@ -1,28 +1,36 @@
-import { useEffect } from 'react';
+import React, { FC, MouseEventHandler, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { Box, CircularProgress, Grid, Modal, Typography } from '@mui/material';
-import { CommentForm } from 'components';
-import { GalleryImage } from 'components';
+import { CommentForm, GalleryImage } from 'components';
 import { StyledModalCloseButton } from 'styled/galleryPage/imageModal/StyledModalCloseButton';
 import { StyledModalWrapper } from 'styled/galleryPage/imageModal/StyledModalWrapper';
 import { variables } from 'styled/variables';
 
+import { RootState } from 'store';
 import { fetchImageDetails } from 'store/ducks/images';
 import { convertDate } from 'utils/converDate';
 
-export const ImageModal = ({ open, onCloseImageModal }) => {
-    const dispatch = useDispatch();
-    const { id } = useParams();
+interface IImageModalProps {
+    open: boolean;
+    onCloseImageModal: MouseEventHandler;
+}
 
-    const image = useSelector((state) => state.images.imageDetails);
+export const ImageModal: FC<IImageModalProps> = ({
+    open,
+    onCloseImageModal
+}) => {
+    const dispatch = useDispatch();
+    const { id } = useParams<{ id: string }>();
+
+    const image = useSelector((state: RootState) => state.images.imageDetails);
     const imageLoading = useSelector(
-        (state) => state.images.imageDetailsLoading
+        (state: RootState) => state.images.imageDetailsLoading
     );
 
     useEffect(() => {
-        dispatch(fetchImageDetails(id));
+        dispatch(fetchImageDetails(id as string));
     }, [dispatch, id]);
 
     return (
@@ -45,7 +53,9 @@ export const ImageModal = ({ open, onCloseImageModal }) => {
                                     xs={1}
                                     sm={7}
                                 >
-                                    <GalleryImage src={image.url} />
+                                    {image.url && (
+                                        <GalleryImage src={image.url} />
+                                    )}
                                 </Grid>
                                 <Grid
                                     paddingTop={{ xs: 3, sm: 2 }}

@@ -1,16 +1,22 @@
 import { useFormik } from 'formik';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import * as Yup from 'yup';
 
 import { Grid } from '@mui/material';
 import { ModalButton, ModalInput } from 'components';
 
 import { sendComment } from 'store/ducks/images';
+import * as Yup from 'yup';
+
+interface IInputValues {
+    name: string;
+    text: string;
+}
 
 export const CommentForm = () => {
     const dispatch = useDispatch();
-    const id = useParams();
+    const { id } = useParams<{ id: string }>();
 
     const validationSchema = Yup.object({
         name: Yup.string()
@@ -29,8 +35,8 @@ export const CommentForm = () => {
             text: ''
         },
         validationSchema: validationSchema,
-        onSubmit: (commentInfo) => {
-            dispatch(sendComment({ commentInfo, id }));
+        onSubmit: (commentInfo: IInputValues) => {
+            dispatch(sendComment({ commentInfo, id: id as string }));
         }
     });
 
@@ -38,22 +44,24 @@ export const CommentForm = () => {
         <Grid paddingX={2} paddingY={1} item xs={1} sm={7}>
             <form onSubmit={formik.handleSubmit}>
                 <ModalInput
-                    name="name"
-                    value={formik.values.name}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
                     error={formik.touched.name && Boolean(formik.errors.name)}
-                    helperText={formik.touched.name && formik.errors.name}
+                    helperText={
+                        formik.touched.name && formik.errors.name
+                            ? formik.errors.name
+                            : undefined
+                    }
                     placeholder="Ваше имя"
+                    {...formik.getFieldProps('name')}
                 />
                 <ModalInput
-                    name="text"
-                    value={formik.values.text}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
                     error={formik.touched.text && Boolean(formik.errors.text)}
-                    helperText={formik.touched.text && formik.errors.text}
+                    helperText={
+                        formik.touched.text && formik.errors.text
+                            ? formik.errors.text
+                            : undefined
+                    }
                     placeholder="Ваш комментарий"
+                    {...formik.getFieldProps('text')}
                 />
                 <ModalButton type="submit" />
             </form>
