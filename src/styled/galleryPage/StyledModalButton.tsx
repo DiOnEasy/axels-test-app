@@ -9,5 +9,7 @@ export const StyledModalButton = styled.button`
     width: 100%;
     padding: 10px;
     border: none;
-    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+    }
 `;

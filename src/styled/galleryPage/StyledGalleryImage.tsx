@@ -6,5 +6,7 @@ export const StyledGalleryImage = styled.img<{ $pointer?: boolean }>`
   object-fit: cover;
   max-height: 380px;
   height: 100%;
-  cursor: ${({ $pointer }) => ($pointer ? 'pointer' : 'auto')};
+  &:hover{
+    cursor: ${({ $pointer }) => ($pointer ? 'pointer' : 'auto')};
+  }
 `;

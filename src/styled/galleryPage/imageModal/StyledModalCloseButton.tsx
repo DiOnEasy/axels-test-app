@@ -7,7 +7,9 @@ export const StyledModalCloseButton = styled.div`
     top: 15px;
     width: 32px;
     height: 32px;
-    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+    }
     &:before,
     &:after {
         position: absolute;

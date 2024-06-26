@@ -107,12 +107,10 @@ export function* workerFetchImages() {
     }
 }
 
-export function* workerFetchImageDetails(
-    action: PayloadAction<{ id: string }>
-) {
+export function* workerFetchImageDetails(action: PayloadAction<string>) {
     try {
         yield put(setLoading({ type: 'imageDetailsLoading', value: true }));
-        const { data } = yield call(fetchImageDetailsApi, action.payload.id);
+        const { data } = yield call(fetchImageDetailsApi, action.payload);
         if (data) {
             yield put(fetchImageDetailsSuccess(data));
         } else {
@@ -125,16 +123,13 @@ export function* workerFetchImageDetails(
 }
 
 export function* workerSendComment(
-    action: PayloadAction<{ commentInfo: ICommentInfo, id: { id: string } }>
+    action: PayloadAction<{ commentInfo: ICommentInfo, id: string }>
 ) {
     try {
-        const {
-            commentInfo,
-            id: { id }
-        } = action.payload;
+        const { commentInfo, id } = action.payload;
         yield put(setLoading({ type: 'commentLoading', value: true }));
-        const { data } = yield call(sendCommentApi, id, commentInfo);
-        if (data._bodyInit === 204) {
+        const { _bodyInit } = yield call(sendCommentApi, id, commentInfo);
+        if (_bodyInit === 204) {
             yield put(sendCommentSuccess(commentInfo));
         } else {
             alert('Something went wrong');

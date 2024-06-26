@@ -16,7 +16,9 @@ export const StyledInput = styled(TextField)`
         padding: 10px;
         width: 100%;
         border-radius: 5px;
-        cursor: pointer;
+        &:hover {
+            cursor: pointer;
+        }
         &::placeholder {
             color: #e2e2e1;
         }
