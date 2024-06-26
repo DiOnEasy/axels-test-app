@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from '@redux-saga/core/effects';
 import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
 
-import axios from 'api/axios';
+import { fetchImageDetailsApi, fetchImagesApi, sendCommentApi } from 'api';
 
 export interface ICommentInfo {
     text: string;
@@ -98,9 +98,7 @@ export function* watcherSendComment() {
 export function* workerFetchImages() {
     try {
         yield put(setLoading({ type: 'loading', value: true }));
-        const {
-            data: { data }
-        } = yield call(axios.get, '/api/images');
+        const { data } = yield call(fetchImagesApi);
         yield put(fetchImagesSuccess(data));
     } catch (err) {
         console.warn(err);
@@ -114,9 +112,7 @@ export function* workerFetchImageDetails(
 ) {
     try {
         yield put(setLoading({ type: 'imageDetailsLoading', value: true }));
-        const {
-            data: { data }
-        } = yield call(axios.get, `/api/images/${action.payload}`);
+        const { data } = yield call(fetchImageDetailsApi, action.payload.id);
         if (data) {
             yield put(fetchImageDetailsSuccess(data));
         } else {
@@ -137,11 +133,7 @@ export function* workerSendComment(
             id: { id }
         } = action.payload;
         yield put(setLoading({ type: 'commentLoading', value: true }));
-        const { data } = yield call(
-            axios.post,
-            `/api/images/${id}/comments`,
-            commentInfo
-        );
+        const { data } = yield call(sendCommentApi, id, commentInfo);
         if (data._bodyInit === 204) {
             yield put(sendCommentSuccess(commentInfo));
         } else {
