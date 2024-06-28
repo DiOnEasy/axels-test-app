@@ -1,7 +1,7 @@
 import React, { Navigate } from 'react-router-dom';
 
-import { GalleryPage } from 'pages/galleryPage/GalleryPage';
-import { NotFoundPage } from 'pages/notFoundPage/NotFoundPage';
+import { GalleryPage } from 'pages/GalleryPage';
+import { NotFoundPage } from 'pages/NotFoundPage';
 
 export const routes = [
     {
@@ -9,7 +9,11 @@ export const routes = [
         component: <Navigate to={'/gallery'} />
     },
     {
-        path: '/gallery/:id?',
+        path: '/gallery/:id',
+        component: <GalleryPage />
+    },
+    {
+        path: '/gallery',
         component: <GalleryPage />
     },
     {

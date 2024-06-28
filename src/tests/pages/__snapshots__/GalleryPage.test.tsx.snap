@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GalleryPage GalleryPage snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiGrid-root MuiGrid-container css-y8o7sp-MuiGrid-root"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-1oljlpb-MuiGrid-root"
+    >
+      <a
+        href="/gallery/1"
+      >
+        <img
+          class="sc-eqUzNf dtNceb"
+          src="image1.jpg"
+        />
+      </a>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-1oljlpb-MuiGrid-root"
+    >
+      <a
+        href="/gallery/2"
+      >
+        <img
+          class="sc-eqUzNf dtNceb"
+          src="image2.jpg"
+        />
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;

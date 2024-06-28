@@ -38,7 +38,14 @@ export const ImageModal: FC<IImageModalProps> = ({
             <Modal open={open}>
                 <StyledModalWrapper>
                     {imageLoading ? (
-                        <Box sx={{ display: 'grid', justifyContent: 'center' }}>
+                        <Box
+                            sx={{
+                                display: 'grid',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                height: '100%'
+                            }}
+                        >
                             <CircularProgress />
                         </Box>
                     ) : (

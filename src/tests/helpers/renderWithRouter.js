@@ -3,12 +3,13 @@ import { Provider } from 'react-redux';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import { routes } from 'routes/routes';
-import store from 'store';
 
-export const renderWithRouter = (component, initialRoute = '/') => {
+export const renderWithRouter = ({ route = '/' } = {}, store) => {
+    window.history.pushState({}, 'Test page', route);
+
     return render(
         <Provider store={store}>
-            <MemoryRouter>
+            <MemoryRouter initialEntries={[route]}>
                 <Routes>
                     {routes.map((route, index) => (
                         <Route
@@ -18,7 +19,6 @@ export const renderWithRouter = (component, initialRoute = '/') => {
                         />
                     ))}
                 </Routes>
-                {component}
             </MemoryRouter>
         </Provider>
     );
