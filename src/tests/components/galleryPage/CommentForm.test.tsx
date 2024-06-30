@@ -1,21 +1,30 @@
 import '@babel/preset-react';
 import '@testing-library/jest-dom';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
+import { Provider } from 'react-redux';
 
-import { GalleryPage } from 'pages/GalleryPage';
+import { CommentForm } from 'components';
 
-import { renderWithRouter } from 'tests/helpers/renderWithRouter';
+import store from 'store';
 
 describe('CommentForm', () => {
     it('CommentForm snapshot', () => {
-        const { asFragment } = renderWithRouter({ route: '/gallery/1' });
+        const { asFragment } = render(
+            <Provider store={store}>
+                <CommentForm />
+            </Provider>
+        );
 
         expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render the form correctly', () => {
-        renderWithRouter({ route: '/gallery/1' });
+        render(
+            <Provider store={store}>
+                <CommentForm />
+            </Provider>
+        );
 
         expect(screen.getByPlaceholderText('Ваше имя')).toBeInTheDocument();
         expect(
