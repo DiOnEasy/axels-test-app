@@ -48,13 +48,13 @@ describe('GalleryPage', () => {
 
     it('GalleryPage snapshot', () => {
         store = mockStore(getStateWithLoading(false));
-        
-        const { asFragment } = renderWithRouter(
+
+        const { baseElement } = renderWithRouter(
             {
                 route: '/gallery'
             },
             store
         );
-        expect(asFragment()).toMatchSnapshot();
+        expect(baseElement).toMatchSnapshot();
     });
 });

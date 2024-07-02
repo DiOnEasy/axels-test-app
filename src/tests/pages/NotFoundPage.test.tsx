@@ -1,13 +1,23 @@
 import '@babel/preset-react';
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
-import React from 'react';
+import { screen } from '@testing-library/react';
 
-import { NotFoundPage } from 'pages/NotFoundPage';
+import store from 'store';
+import { renderWithRouter } from 'tests/helpers/renderWithRouter';
 
 describe('NotFoundPage', () => {
-    it('NotFoundPage snapshot', () => {
-        const { asFragment } = render(<NotFoundPage />);
-        expect(asFragment()).toMatchSnapshot();
+    it('should render home page link', () => {
+        renderWithRouter({ route: '/not-found-page' }, store);
+        const link = screen.getByRole('link');
+        expect(link).toBeInTheDocument();
+        expect(link).toHaveAttribute('href', '/');
+    });
+    
+    it('should match snapshot', () => {
+        const { baseElement } = renderWithRouter(
+            { route: '/not-found-page' },
+            store
+        );
+        expect(baseElement).toMatchSnapshot();
     });
 });

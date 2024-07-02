@@ -1,4 +1,10 @@
-import { call, put, takeEvery } from '@redux-saga/core/effects';
+import {
+    CallEffect,
+    PutEffect,
+    call,
+    put,
+    takeEvery
+} from '@redux-saga/core/effects';
 import { PayloadAction, createAction, createSlice } from '@reduxjs/toolkit';
 
 import { fetchImageDetailsApi, fetchImagesApi, sendCommentApi } from 'api';
@@ -95,7 +101,11 @@ export function* watcherSendComment() {
     yield takeEvery(sendComment.type, workerSendComment);
 }
 
-export function* workerFetchImages() {
+export function* workerFetchImages(): Generator<
+    CallEffect | PutEffect<any>,
+    void,
+    any
+> {
     try {
         yield put(setLoading({ type: 'loading', value: true }));
         const { data } = yield call(fetchImagesApi);
@@ -107,7 +117,9 @@ export function* workerFetchImages() {
     }
 }
 
-export function* workerFetchImageDetails(action: PayloadAction<string>) {
+export function* workerFetchImageDetails(
+    action: PayloadAction<string>
+): Generator<CallEffect | PutEffect<any>, void, any> {
     try {
         yield put(setLoading({ type: 'imageDetailsLoading', value: true }));
         const { data } = yield call(fetchImageDetailsApi, action.payload);
@@ -124,7 +136,7 @@ export function* workerFetchImageDetails(action: PayloadAction<string>) {
 
 export function* workerSendComment(
     action: PayloadAction<{ commentInfo: ICommentInfo, id: string }>
-) {
+): Generator<CallEffect | PutEffect<any>, void, any> {
     try {
         const { commentInfo, id } = action.payload;
         yield put(setLoading({ type: 'commentLoading', value: true }));
