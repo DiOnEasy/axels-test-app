@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { StyledFooter } from 'styled/footer/StyledFooter';
+import { StyledFooter } from 'styled/StyledFooter';
 
 export const Footer: FC = () => {
     const currentYear = new Date().getFullYear();
