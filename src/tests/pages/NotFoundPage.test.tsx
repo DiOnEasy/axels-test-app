@@ -9,10 +9,9 @@ describe('NotFoundPage', () => {
     it('should render home page link', () => {
         renderWithRouter({ route: '/not-found-page' }, store);
         const link = screen.getByRole('link');
-        expect(link).toBeInTheDocument();
         expect(link).toHaveAttribute('href', '/');
     });
-    
+
     it('should match snapshot', () => {
         const { baseElement } = renderWithRouter(
             { route: '/not-found-page' },

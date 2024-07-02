@@ -6,7 +6,7 @@ import React from 'react';
 import { ModalInput } from 'components';
 
 describe('ModalInput', () => {
-    it('ModalInput snapshot', () => {
+    it('should match a snapshot', () => {
         const mockProps = {
             name: 'testName',
             value: 'testValue',

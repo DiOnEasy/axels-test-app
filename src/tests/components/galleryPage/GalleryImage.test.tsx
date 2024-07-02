@@ -6,7 +6,7 @@ import React from 'react';
 import { GalleryImage } from 'components';
 
 describe('GalleryImage', () => {
-    it('GalleryImage snapshot', () => {
+    it('should match a snapshot', () => {
         const mockSrc = 'https://test.test';
         const { asFragment } = render(<GalleryImage src={mockSrc} />);
         expect(asFragment()).toMatchSnapshot();

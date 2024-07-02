@@ -18,6 +18,7 @@ describe('GalleryPage', () => {
             loading: true
         }
     };
+
     beforeEach(() => {
         store = mockStore(initialState);
     });
@@ -30,13 +31,13 @@ describe('GalleryPage', () => {
         }
     });
 
-    test('renders loading state initially', () => {
+    it('should render loading state initially', () => {
         renderWithRouter({ route: '/gallery' }, store);
 
         expect(screen.getByText('loading')).toBeInTheDocument();
     });
 
-    test('renders images after loading', async () => {
+    it('should render images after loading', async () => {
         store = mockStore(getStateWithLoading(false));
 
         renderWithRouter({ route: '/gallery' }, store);
@@ -46,7 +47,7 @@ describe('GalleryPage', () => {
         });
     });
 
-    it('GalleryPage snapshot', () => {
+    it('should match a snapshot', () => {
         store = mockStore(getStateWithLoading(false));
 
         const { baseElement } = renderWithRouter(
@@ -55,6 +56,7 @@ describe('GalleryPage', () => {
             },
             store
         );
+
         expect(baseElement).toMatchSnapshot();
     });
 });

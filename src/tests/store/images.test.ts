@@ -72,28 +72,30 @@ describe('imageSlice', () => {
             initialState,
             sendCommentSuccess(commentInfo)
         );
-        expect(actual.imageDetails.comments.length).toEqual(1);
-        expect(actual.imageDetails.comments[0].text).toEqual('Nice');
-        expect(actual.imageDetails.comments[0].name).toEqual('John');
-        expect(actual.imageDetails.comments[0].date).toEqual(
-            Math.floor(Date.now() / 1000)
-        );
+
+        expect(actual.imageDetails.comments[0]).toEqual({
+            text: 'Nice',
+            name: 'John',
+            date: Math.floor(Date.now() / 1000)
+        });
     });
 });
 
-describe('sagas', () => {
-    it('workerFetchImages should fetch images and dispatch success action', async () => {
-        const dispatched: any[] = [];
+describe('images sagas', () => {
+    let dispatched: any[];
+    let fakeStore: any;
 
-        const fakeStore = {
+    beforeEach(() => {
+        dispatched = [];
+        fakeStore = {
             getState: () => ({}),
             dispatch: (action: any) => dispatched.push(action)
         };
+    });
 
-        const mockImages = [
-            { id: '1', url: 'url1' },
-            { id: '2', url: 'url2' }
-        ];
+    it('should call fetchImagesApi only one time in workerFetchImages', async () => {
+        const mockImages = [{}];
+
         const fetchImagesApi = jest
             .spyOn(api, 'fetchImagesApi')
             .mockImplementation(() => Promise.resolve({ data: mockImages }));
@@ -101,6 +103,19 @@ describe('sagas', () => {
         await runSaga(fakeStore, workerFetchImages).toPromise();
 
         expect(fetchImagesApi).toHaveBeenCalledTimes(1);
+    });
+
+    it('should dispatch fetchImagesSuccess action in workerFetchImages', async () => {
+        const mockImages = [
+            { id: '1', url: 'url1' },
+            { id: '2', url: 'url2' }
+        ];
+
+        jest.spyOn(api, 'fetchImagesApi').mockImplementation(() =>
+            Promise.resolve({ data: mockImages })
+        );
+
+        await runSaga(fakeStore, workerFetchImages).toPromise();
 
         expect(dispatched).toEqual([
             setLoading({ type: 'loading', value: true }),
@@ -109,15 +124,8 @@ describe('sagas', () => {
         ]);
     });
 
-    it('workerFetchImageDetails should fetch image details and dispatch success action', async () => {
-        const dispatched: any[] = [];
-
-        const fakeStore = {
-            getState: () => ({}),
-            dispatch: (action: any) => dispatched.push(action)
-        };
-
-        const mockImageDetails = { id: '1', url: 'url1', comments: [] };
+    it('should call fetchImageDetailsApi only one time in workerFetchImageDetails', async () => {
+        const mockImageDetails = {};
 
         const requestImageDetailsApi = jest
             .spyOn(api, 'fetchImageDetailsApi')
@@ -132,6 +140,20 @@ describe('sagas', () => {
         ).toPromise();
 
         expect(requestImageDetailsApi).toHaveBeenCalledTimes(1);
+    });
+
+    it('should dispatch fetchImageDetailsSuccess action in workerFetchImageDetails', async () => {
+        const mockImageDetails = { id: '1', url: 'url1', comments: [] };
+
+        jest.spyOn(api, 'fetchImageDetailsApi').mockImplementation(() =>
+            Promise.resolve({ data: mockImageDetails })
+        );
+
+        await runSaga(
+            fakeStore,
+            workerFetchImageDetails,
+            fetchImageDetails('1')
+        ).toPromise();
 
         expect(dispatched).toEqual([
             setLoading({ type: 'imageDetailsLoading', value: true }),
@@ -140,14 +162,7 @@ describe('sagas', () => {
         ]);
     });
 
-    it('workerSendComment should send comment and dispatch success action', async () => {
-        const dispatched: any[] = [];
-
-        const fakeStore = {
-            getState: () => ({}),
-            dispatch: (action: any) => dispatched.push(action)
-        };
-
+    it('should call sendCommentApi only one time in workerSendComment', async () => {
         const mockCommentInfo = { text: 'Nice', name: 'John' };
         const mockId = '1';
 
@@ -162,6 +177,27 @@ describe('sagas', () => {
         ).toPromise();
 
         expect(sendCommentApi).toHaveBeenCalledTimes(1);
+
+        expect(dispatched).toEqual([
+            setLoading({ type: 'commentLoading', value: true }),
+            sendCommentSuccess(mockCommentInfo),
+            setLoading({ type: 'commentLoading', value: false })
+        ]);
+    });
+
+    it('should dispatch sendCommentSuccess action in workerSendComment', async () => {
+        const mockCommentInfo = { text: 'Nice', name: 'John' };
+        const mockId = '1';
+
+        jest.spyOn(api, 'sendCommentApi').mockImplementation(() =>
+            Promise.resolve({ _bodyInit: 204 })
+        );
+
+        await runSaga(
+            fakeStore,
+            workerSendComment,
+            sendComment({ commentInfo: mockCommentInfo, id: mockId })
+        ).toPromise();
 
         expect(dispatched).toEqual([
             setLoading({ type: 'commentLoading', value: true }),

@@ -6,7 +6,7 @@ import React from 'react';
 import { Footer } from 'components';
 
 describe('Footer', () => {
-    it('Footer snapshot', () => {
+    it('should match a snapshot', () => {
         const { asFragment } = render(<Footer />);
         expect(asFragment()).toMatchSnapshot();
     });

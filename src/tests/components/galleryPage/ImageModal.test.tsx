@@ -28,16 +28,31 @@ const store = mockStore({
 });
 
 describe('ImageModal Component', () => {
-    it('should render img and comments', () => {
-        render(
+    const renderComponent = () => {
+        return render(
             <Provider store={store}>
                 <ImageModal open={true} onCloseImageModal={() => {}} />
             </Provider>
         );
+    };
 
+    it('should render img', () => {
+        renderComponent();
         expect(screen.getByRole('img')).toBeInTheDocument();
+    });
+
+    it('should render comment date', () => {
+        renderComponent();
         expect(screen.getByText('26.12.2068')).toBeInTheDocument();
+    });
+
+    it('should render comment text', () => {
+        renderComponent();
         expect(screen.getByText('Nice picture!')).toBeInTheDocument();
+    });
+
+    it('should render two paragraph elements', () => {
+        renderComponent();
         expect(screen.getAllByRole('paragraph')).toHaveLength(2);
     });
 

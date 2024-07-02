@@ -6,7 +6,7 @@ import React from 'react';
 import { Header } from 'components';
 
 describe('Header', () => {
-    it('Header snapshot', () => {
+    it('should match a snapshot', () => {
         const { asFragment } = render(<Header />);
         expect(asFragment()).toMatchSnapshot();
     });
