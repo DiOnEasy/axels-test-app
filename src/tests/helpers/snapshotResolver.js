@@ -1,8 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 
-console.log('Snapshot resolver loaded');
-
 const snapshotsDir = path.join(__dirname, '../__snapshots__');
 
 function getAllSubdirectories(srcPath) {
@@ -19,7 +17,6 @@ module.exports = {
             snapshotsDir,
             `${testFileName}${snapshotExtension}`
         );
-        console.log(`Resolved snapshot path: ${snapshotPath}`);
         return snapshotPath;
     },
     resolveTestPath: (snapshotFilePath, snapshotExtension) => {
@@ -33,7 +30,6 @@ module.exports = {
         for (const dir of testDirectories) {
             const fullPath = path.join(dir, testFileName);
             if (pathExists(fullPath)) {
-                console.log(`Resolved test path: ${fullPath}`);
                 return fullPath;
             }
         }
@@ -56,5 +52,3 @@ function pathExists(filePath) {
         return false;
     }
 }
-
-console.log('Snapshot resolver configuration complete');
