@@ -1,4 +1,5 @@
-import React, { Navigate } from 'react-router-dom';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 import { GalleryPage } from 'pages/GalleryPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
