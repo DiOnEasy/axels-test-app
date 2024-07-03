@@ -5,7 +5,6 @@ console.log('Snapshot resolver loaded');
 
 const snapshotsDir = path.join(__dirname, '../__snapshots__');
 
-// Функция для поиска всех подкаталогов в директории
 function getAllSubdirectories(srcPath) {
     return fs
         .readdirSync(srcPath, { withFileTypes: true })
