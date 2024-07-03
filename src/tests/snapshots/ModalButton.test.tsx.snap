@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalButton should match a snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-iGgVNO cESqvO"
+  >
+    Оставить комментарий
+  </button>
+</DocumentFragment>
+`;

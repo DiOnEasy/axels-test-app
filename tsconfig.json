@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./src",         
+    "outDir": "./dist",         
+    "rootDir": "./src",         
+    "module": "commonjs",       
+    "strict": true,             
+    "esModuleInterop": true,    
+    "forceConsistentCasingInFileNames": true, 
+    "moduleResolution": "node", 
+    "resolveJsonModule": true,  
+    "jsx": "react",             
+    "types": ["node", "react", "jest", "@testing-library/jest-dom"], 
+    "lib": ["dom","esnext"]           
+  },
+  "include": ["src/**/*"],      
+  "exclude": ["node_modules"]   
+}

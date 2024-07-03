@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match a snapshot 1`] = `
+<DocumentFragment>
+  <h1
+    class="sc-gEvDqW hzAlXE"
+  >
+    Test app
+  </h1>
+</DocumentFragment>
+`;

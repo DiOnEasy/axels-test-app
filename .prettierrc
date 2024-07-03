@@ -5,12 +5,9 @@
   "tabWidth": 4,
   "trailingComma": "none",
   "importOrder": [
-    "^@((?!mui).)*$|<THIRD_PARTY_MODULES>|^react(.*)$",
+    "^@((?!mui).)*$|<THIRD_PARTY_MODULES>|^react(.*)$|^formik(.*)$",
     "^components/(.*)$|components|^pages/(.*)$|pages|^styled/(.*)$|styled|@mui/(.*)$|@mui|App",
     "^.*/|^.*"
   ],
   "importOrderSeparation": true
-  
- 
- 
 }
