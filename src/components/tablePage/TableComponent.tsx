@@ -76,3 +76,12 @@ export const TableComponent = () => {
         </Paper>
     );
 };
+
+const clown = () => {
+    const aga = ['sdkfjsldfjdkl', 'kldsjf'];
+    aga.map((a) => {
+        console.log(a)
+        
+    })
+
+};
